@@ -13,11 +13,39 @@ router.get('/', function(req, res, next) {
 //List all drinks
 //Includes search and filter functionalities
 router.get("/drinks", function (req, res) {
+  console.log(req.query);
+  if (
+    (!req.query.search && !req.query.category) ||
+    (req.query.search == "" && req.query.category == "all")
+  ) {
     var collection = db.get("drinks");
     collection.find({}, function (err, drinks) {
       if (err) throw err;
       res.render("index", { results: drinks });
     });
+  } else if (req.query.search != "" && req.query.category == "all") {
+    var collection = db.get("drinks");
+    var regex = new RegExp([req.query.search].join(""), "i");
+    collection.find({ type: regex }, function (err, drinks) {
+      if (err) throw err;
+      res.render("index", { results: drinks });
+    });
+  } else if (req.query.search != "" && req.query.drinks != "all") {
+    var collection = db.get("drinks");
+    var regex = new RegExp([req.query.search].join(""), "i");
+    var regexG = new RegExp([req.query.category].join(""), "i");
+    collection.find({ type: regex, category: regexG }, function (err, drinks) {
+      if (err) throw err;
+      res.render("index", { results: drinks });
+    });
+  } else if (req.query.search == "" && req.query.search != "all") {
+    var collection = db.get("drinks");
+    var regexG = new RegExp([req.query.category].join(""), "i");
+    collection.find({ category: regexG }, function (err, drinks) {
+      if (err) throw err;
+      res.render("index", { results: drinks });
+    });
+  }
 });
 
 //Show new drink form
