@@ -1,0 +1,51 @@
+<%- include ('partials/header') %>
+
+
+  <div class="jumbotron">
+    <h1 class="display-4">Coffee Shop</h1>
+    <a class="btn btn-primary btn-lg" href="/drinks/new" role="button">
+      Add new drink </a>
+
+  </div>
+
+  <!-- <div class="jumbotron-fluid">
+    <div class="container-fluid">
+
+      <form action="drinks" class="form-group lead" method="GET">
+
+        <input name="search" type="text" placeholder="Enter title" />
+        <label for="videos">Choose a genre</label>
+
+        <select name="genre" class="form-group" id="videos" onchange="searchGenre()">
+
+          <option value="all">All</option>
+          <option value="fantasy">Fantasy</option>
+          <option value="horror">Horror</option>
+          <option value="animation">Animation</option>
+          <option value="drama">Drama</option>
+          <option value="scifi">SciFi</option>
+        </select>
+
+        <button type="submit" class="btn btn-warning">Search</button>
+      </form>
+    </div>
+  </div> -->
+
+
+  <div class="container">
+
+    <div class="row">
+      <% results.forEach(function(drink){ %>
+        <div class="sm-col-3">
+          <img src="images/<%= drink.image %>" style="width:200px; height:200px;" class="img-thumbnail" />
+          <div class="caption"><a href="drinks/<%= drink._id %>">
+              <%= drink.type %>
+            </a></div>
+        </div>
+
+        <% }); %>
+
+    </div>
+  </div>
+
+  <%- include ('partials/footer') %>

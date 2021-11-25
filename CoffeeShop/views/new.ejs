@@ -1,0 +1,38 @@
+<%- include ('partials/header') %>
+<div class="container">
+<h1> New drink </h1>
+
+<form action="/drinks" method="POST">
+
+<div class="form-group">
+	<input type="text" name="type" class="form-control" placeholder="Drink Name">
+</div>
+ <div class="form-group">
+	<input type="text" name="category" class="form-control" placeholder="Category">
+</div>
+<div class="form-group">
+	<input type="text" name="image" class="form-control" placeholder="Image">
+</div>
+ <div class="form-group">
+	<textarea name="description" class="form-control" placeholder="Description"></textarea>
+</div>
+<div class="form-group">
+	<input type="text" name="standard_calories" class="form-control" placeholder="Calories">
+</div>
+<div class="form-group">
+	<input type="text" name="ingredients" class="form-control" placeholder="Ingredients">
+</div>
+<div class="form-group">
+	<input type="text" name="guide" class="form-control" placeholder="Size Guide">
+</div>
+<div class="form-group">
+	<button type="submit" class="btn btn-info" >Save</button>
+</div>
+
+</form>
+
+<a href="/">Cancel</a>
+
+</div>
+
+<%- include ('partials/footer') %>

@@ -1,0 +1,27 @@
+<%- include ('partials/header') %>
+
+<div class="container">
+<h1> Drink Details </h1>
+
+<p><img src="/images/<%= drink.image %>" /></p>
+<p>Title: <%= drink.type %></p>
+<p>Category: <%= drink.category %></p>
+<p>Description: <%= drink.description %></p>
+
+<form action="/drinks/<%= drink._id %>/edit" method="GET">
+    <button type="submit" class="btn btn-warning">Edit drink</button>
+</form>
+
+<br/>
+
+<form action="/drinks/<%= drink._id %>?_method=DELETE" method="POST">
+    <button type="submit" class="btn btn-danger">Delete drink</button>
+</form>
+
+
+<p>
+<a href="/">Back to List</a>
+</p>
+
+</div>
+<%- include ('partials/footer') %>
