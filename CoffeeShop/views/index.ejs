@@ -1,47 +1,18 @@
 <%- include ('partials/header') %>
 
+<% if (user) { %>
 
-  <div class="jumbotron">
-    <h1 class="display-4">Coffee Shop</h1>
-    <a class="btn btn-primary btn-lg" href="/drinks/new" role="button">
-      Add new drink </a>
+<div class="caption">You are currently logged in as <%= user.username %></div>
+<a href="/logout">Logout</a>
 
-  </div>
+<% } else { %>
 
-  <div class="jumbotron-fluid">
-    <div class="container-fluid">
-      <form action="drinks" class="form-group lead" method="GET">
-        <input name="search" type="text" placeholder="Enter title" />
-        <label for="drinks">Choose a drink</label>
+<div class="caption">Welcome Guest! </div>
 
-        <select name="category" class="form-group" id="category" onchange="searchCategory()">
-
-          <option value="all">All</option>
-          <option value="hot">Hot Coffee</option>
-          <option value="cold">Cold Coffee</option>
-          <option value="tea">Tea</option>
-        </select>
-
-        <button type="submit" class="btn btn-warning">Search</button>
-      </form>
-    </div>
-  </div> 
+<a href="/login">Login
+<br />
+<a href="/register">Register</a></a>
 
 
-  <div class="container">
-
-    <div class="row">
-      <% results.forEach(function(drink){ %>
-        <div class="sm-col-3">
-          <img src="images/<%= drink.image %>" style="width:200px; height:200px;" class="img-thumbnail" />
-          <div class="caption"><a href="drinks/<%= drink._id %>">
-              <%= drink.type %>
-            </a></div>
-        </div>
-
-        <% }); %>
-
-    </div>
-  </div>
-
-  <%- include ('partials/footer') %>
+<%} %>
+<%- include ('partials/footer') %>

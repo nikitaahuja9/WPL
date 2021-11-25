@@ -11,6 +11,27 @@ var app = express();
 const methodOverride = require("method-override");
 app.use(methodOverride("_method"));
 
+
+var bodyParser = require('body-parser');
+var mongoose = require('mongoose');
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
+var session = require('express-session');
+
+app.use(session({ secret: 'this-is-a-secret-token'}));
+app.use(passport.initialize());
+app.use(passport.session());
+
+// passport config
+var Account = require('./models/account');
+passport.use(new LocalStrategy(Account.authenticate()));
+passport.serializeUser(Account.serializeUser());
+passport.deserializeUser(Account.deserializeUser());
+
+// mongoose
+mongoose.connect('mongodb://localhost:27017/coffee-shop');
+
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');

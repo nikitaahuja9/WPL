@@ -1,14 +1,49 @@
-var express = require('express');
-var router = express.Router();
-
 var monk = require('monk');
 var db = monk('localhost:27017/coffee-shop');
 
 var collection = db.get('drinks');
 
-router.get('/', function(req, res, next) {
-  res.redirect('/drinks');
+var express = require('express');
+var router = express.Router();
+var passport = require('passport');
+var Account = require('../models/account');
+
+router.get('/', function (req, res) {
+    res.render('index', { user : req.user });
 });
+
+router.get('/register', function(req, res) {
+    res.render('register', {});
+});
+
+router.post('/register', function(req, res) {
+  Account.register(new Account({ username : req.body.username }), req.body.password, function(err, account) {
+      if (err) {
+          return res.render('register', { account : account });
+      }
+
+      passport.authenticate('local')(req, res, function () {
+        res.redirect('/drinks');
+      });
+  });
+});
+
+router.get('/login', function(req, res) {
+    res.render('login');
+});
+
+router.post('/login', passport.authenticate('local'), function(req, res) {
+    res.redirect('/drinks');
+});
+
+router.get('/logout', function(req, res) {
+    req.logout();
+    res.redirect('/login');
+});
+
+//router.get('/', function(req, res, next) {
+//  res.redirect('/drinks');
+//});
 
 //List all drinks
 //Includes search and filter functionalities
@@ -21,14 +56,14 @@ router.get("/drinks", function (req, res) {
     var collection = db.get("drinks");
     collection.find({}, function (err, drinks) {
       if (err) throw err;
-      res.render("index", { results: drinks });
+      res.render("drinks", { results: drinks });
     });
   } else if (req.query.search != "" && req.query.category == "all") {
     var collection = db.get("drinks");
     var regex = new RegExp([req.query.search].join(""), "i");
     collection.find({ type: regex }, function (err, drinks) {
       if (err) throw err;
-      res.render("index", { results: drinks });
+      res.render("drinks", { results: drinks });
     });
   } else if (req.query.search != "" && req.query.drinks != "all") {
     var collection = db.get("drinks");
@@ -36,14 +71,14 @@ router.get("/drinks", function (req, res) {
     var regexG = new RegExp([req.query.category].join(""), "i");
     collection.find({ type: regex, category: regexG }, function (err, drinks) {
       if (err) throw err;
-      res.render("index", { results: drinks });
+      res.render("drinks", { results: drinks });
     });
   } else if (req.query.search == "" && req.query.search != "all") {
     var collection = db.get("drinks");
     var regexG = new RegExp([req.query.category].join(""), "i");
     collection.find({ category: regexG }, function (err, drinks) {
       if (err) throw err;
-      res.render("index", { results: drinks });
+      res.render("drinks", { results: drinks });
     });
   }
 });
@@ -102,7 +137,7 @@ router.post('/drinks/:id/save_edit', function(req, res){
 
       function(err, drink) {
       if (err) throw err;
-      res.redirect('/');
+      res.redirect('/drinks');
   }) 
 });
 
