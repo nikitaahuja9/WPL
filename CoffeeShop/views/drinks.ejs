@@ -1,10 +1,15 @@
 <%- include ('partials/header') %>
 
-
   <div class="jumbotron">
     <h1 class="display-4">Coffee Shop</h1>
     <a class="btn btn-primary btn-lg" href="/drinks/new" role="button">
       Add new drink </a>
+    <a class="btn btn-primary btn-lg" href="/logout" role="button">
+      Logout </a>
+    <a class="btn btn-primary btn-lg" href="/logout" role="button">
+      Cart </a>
+    <a class="btn btn-primary btn-lg" href="/logout" role="button">
+      History </a>
 
   </div>
 
@@ -25,23 +30,43 @@
         <button type="submit" class="btn btn-warning">Search</button>
       </form>
     </div>
-  </div> 
-
+  </div>
 
   <div class="container">
 
     <div class="row">
       <% results.forEach(function(drink){ %>
-        <div class="sm-col-3">
-          <img src="images/<%= drink.image %>" style="width:200px; height:200px;" class="img-thumbnail" />
-          <div class="caption"><a href="drinks/<%= drink._id %>">
+        <div class="sm-col-3 shop-item" data-item-id="<%= drink._id %>">
+          <img class="shop-item-image img-thumbnail" src="images/<%= drink.image %>" style="width:200px; height:200px;" />
+         
+          <div class="caption shop-item-title"><a href="drinks/<%= drink._id %>">
               <%= drink.type %>
             </a></div>
         </div>
-
+        <div>
+          <div class="shop-item-details">
+            <span class="shop-item-price">$<%= 100 %></span>
+            <button class="btn btn-primary shop-item-button" type="button">ADD TO CART</button>
+        </div>
+      </div>
         <% }); %>
 
     </div>
+  </div>
+  <div class="container content-section">
+    <h2 class="section-header">CART</h2>
+    <div class="cart-row">
+        <span class="cart-item cart-header cart-column">ITEM</span>
+        <span class="cart-price cart-header cart-column">PRICE</span>
+        <span class="cart-quantity cart-header cart-column">QUANTITY</span>
+    </div>
+    <div class="cart-items">
+    </div>
+    <div class="cart-total">
+        <strong class="cart-total-title">Total</strong>
+        <span class="cart-total-price">$0</span>
+    </div>
+    <button class="btn btn-primary btn-purchase" type="button">PURCHASE</button>
   </div>
 
   <%- include ('partials/footer') %>

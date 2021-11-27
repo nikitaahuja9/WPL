@@ -8,6 +8,11 @@
 <p>Category: <%= drink.category %></p>
 <p>Description: <%= drink.description %></p>
 
+
+<form action="/drinks/<%= drink._id %>/edit" method="GET">
+    <button type="submit" class="btn btn-warning">Add to Cart</button>
+</form>
+
 <form action="/drinks/<%= drink._id %>/edit" method="GET">
     <button type="submit" class="btn btn-warning">Edit drink</button>
 </form>
