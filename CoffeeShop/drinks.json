@@ -1,0 +1,53 @@
+{  
+    "category": "Hot Coffee",
+    "type": "Caffe Americano",
+    "description": "Espresso shots topped with hot water create a light layer of crema culminating in this wonderfully rich cup with depth and nuance.",
+    "standard_calories": 15,
+    "ingredients": "Water, Brewed Espresso",
+    "size_guide": [{ "size": "Small", "serving_size": 8, "calories": "5", "caffeine": "75", "price": "3" }, { "size": "Medium", "serving_size": 12, "calories": "10", "caffeine": "150", "price": "4" }, { "size": "Large", "serving_size": 16, "calories": "15", "caffeine": "225", "price": "5" }]
+}
+
+{  
+    "category": "Hot Coffee",
+    "type": "Blonde Roast",
+    "description": "Lightly roasted coffee that's soft, mellow and flavorful. Easy-drinking on its own and delicious with milk, sugar or flavored with vanilla, caramel or hazelnut.",
+    "standard_calories": 5,
+    "ingredients": "Brewed Coffee",
+    "size_guide": [{ "size": "Small", "serving_size": 8, "calories": "5", "caffeine": "180", "price": "4" }, { "size": "Medium", "serving_size": 12, "calories": "5", "caffeine": "270", "price": "5" }, { "size": "Large", "serving_size": 16, "calories": "15", "caffeine": "360", "price": "6" }]
+}
+
+{  
+    "category": "Hot Coffee",
+    "type": "Pumpkin Spice Latte",
+    "description": "Our signature espresso and steamed milk with the celebrated flavor combination of pumpkin, cinnamon, nutmeg and clove. Enjoy it topped with whipped cream and real pumpkin-pie spices.",
+    "standard_calories": 390,
+    "ingredients": "Milk, Pumpkin Spice Sauce, Brewed Espresso, Whipped Cream, Pumpkin Spice Topping",
+    "size_guide": [{ "size": "Small", "serving_size": 8, "calories": "210", "caffeine": "75", "price": "5" }, { "size": "Medium", "serving_size": 12, "calories": "300", "caffeine": "75", "price": "6" }, { "size": "Large", "serving_size": 16, "calories": "390", "caffeine": "150", "price": "7" }]
+}
+
+{  
+    "category": "Cold Coffee",
+    "type": "Irish Cream Cold Brew",
+    "description": "Everything and more that you ever wanted in a sippable, dreamy holiday drink: Starbucks® Cold Brew swirled with Irish cream syrup, and topped with a cloud of vanilla sweet cream cold foam and a hint of cocoa.",
+    "standard_calories": 200,
+    "ingredients": "Ice, Brewed Coffee, Irish Cream Cold Foam, Irish Cream Syrup, Cocoa Powder Topping",
+    "size_guide": [{ "size": "Small", "serving_size": 8, "calories": "150", "caffeine": "145", "price": "5" }, { "size": "Medium", "serving_size": 12, "calories": "200", "caffeine": "185", "price": "6" }, { "size": "Large", "serving_size": 16, "calories": "240", "caffeine": "275", "price": "7" }]
+}
+
+{  
+    "category": "Cold Coffee",
+    "type": "Iced White Chocolate Mocha",
+    "description": "Our signature espresso meets white chocolate sauce, milk and ice, and then is finished off with sweetened whipped cream to create this supreme white chocolate delight.",
+    "standard_calories": 310,
+    "ingredients": "Ice, Milk, White Chocolate Mocha Sauce, Brewed Espresso, Whipped Cream",
+    "size_guide": [{ "size": "Small", "serving_size": 8, "calories": "310", "caffeine": "75", "price": "5" }, { "size": "Medium", "serving_size": 12, "calories": "420", "caffeine": "150", "price": "6" }, { "size": "Large", "serving_size": 16, "calories": "560", "caffeine": "225", "price": "7" }]
+}
+
+{  
+    "category": "Cold Coffee",
+    "type": "Iced Apple Crisp Macchiato",
+    "description": "Layered flavors of apple and brown sugar meld like the filling of a gooey apple pie in harmony with espresso, milk, ice and a caramelized-spiced apple drizzle—a nostalgic autumn pick-me-up.",
+    "standard_calories": 280,
+    "ingredients": "Milk, Ice, Brewed Espresso, Spiced Apple Drizzle, Apple Brown Sugar Syrup",
+    "size_guide": [{ "size": "Small", "serving_size": 8, "calories": "210", "caffeine": "75", "price": "5" }, { "size": "Medium", "serving_size": 12, "calories": "280", "caffeine": "150", "price": "6" }, { "size": "Large", "serving_size": 16, "calories": "380", "caffeine": "225", "price": "7" }]
+}

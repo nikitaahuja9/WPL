@@ -8,6 +8,10 @@ var router = express.Router();
 var passport = require('passport');
 var Account = require('../models/account');
 
+var small = {"serving_size": 8, "caffeine": "75", "price": "4"}
+var medium = {"serving_size": 12, "caffeine": "270", "price": "5"}
+var large = {"serving_size": 16, "caffeine": "360", "price": "6"}
+
 router.get('/', function (req, res) {
     res.render('index', { user : req.user });
 });
@@ -41,10 +45,6 @@ router.get('/logout', function(req, res) {
     req.logout();
     res.redirect('/');
 });
-
-//router.get('/', function(req, res, next) {
-//  res.redirect('/drinks');
-//});
 
 //List all drinks
 //Includes search and filter functionalities
@@ -97,7 +97,10 @@ router.post('/drinks', function(req, res){
       description:req.body.description,
       image: "americano.jpg",
       standard_calories:req.body.standard_calories,
-      ingredients:req.body.ingredients
+      ingredients:req.body.ingredients,
+      small:req.body.small,
+      medium:req.body.medium,
+      large:req.body.large
   }, function(err, drink) {
       if (err) throw err;
       res.redirect('/drinks');
@@ -133,7 +136,10 @@ router.post('/drinks/:id/save_edit', function(req, res){
       image:req.body.image,
       description:req.body.description,
       standard_calories:req.body.standard_calories,
-      ingredients:req.body.ingredients
+      ingredients:req.body.ingredients,
+      small:req.body.small,
+      medium:req.body.medium,
+      large:req.body.large
       }}, 
 
       function(err, drink) {
@@ -150,6 +156,27 @@ router.get('/drinks/:id', function(req, res){
       res.render('show', {drink: drink});
 
   }) 
+});
+
+//Show cart
+router.get('/add', function(req, res) {
+  res.render('cart');
+});
+
+//Add item to cart
+router.post('/cart', function(req, res){
+  var col = db.get('cart');
+  col.insert({
+      user : req.user,
+  }, function(err, drink) {
+      if (err) throw err;
+      res.redirect('/drinks');
+  }) 
+});
+
+//Show history
+router.get('/history', function(req, res) {
+  res.render('history');
 });
 
 module.exports = router;

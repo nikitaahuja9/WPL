@@ -21,10 +21,19 @@
 	<input type="text" name="ingredients" class="form-control" placeholder="Ingredients" value="<%=result.ingredients %>">
 </div>
 <div class="form-group">
-	<input type="text" name="guide" class="form-control" placeholder="Size Guide" value="<%=result.size_guide %>">
-</div>
- <div class="form-group">
 	<input name="description" class="form-control" placeholder="Description" value="<%=result.description %>"></input>
+</div>
+<div class="form-group">
+	<input type="text" name="small" class="form-control" pattern = "true|false" title="Must be true/false"
+	placeholder="Size Small" value="<%=result.small %>">
+</div>
+<div class="form-group">
+	<input type="text" name="medium" class="form-control" pattern = "true|false" title="Must be true/false"
+	placeholder="Size Medium" value="<%=result.medium %>">
+</div>
+<div class="form-group">
+	<input type="text" name="large" class="form-control" pattern = "true|false" title="Must be true/false"
+	placeholder="Size Large" value="<%=result.large %>">
 </div>
 <div class="form-group">
 	<button type="submit" class="btn btn-info" >Save</button>

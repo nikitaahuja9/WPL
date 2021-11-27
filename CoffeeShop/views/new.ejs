@@ -5,25 +5,34 @@
 <form action="/drinks" method="POST">
 
 <div class="form-group">
-	<input type="text" name="type" class="form-control" placeholder="Drink Name">
+	<input type="text" name="type" class="form-control" placeholder="Drink Name" required>
 </div>
  <div class="form-group">
-	<input type="text" name="category" class="form-control" placeholder="Category">
+	<input type="text" name="category" class="form-control" placeholder="Category" required>
 </div>
 <div class="form-group">
-	<input type="text" name="image" class="form-control" placeholder="Image">
+	<input type="text" name="image" class="form-control" placeholder="Image" required>
 </div>
  <div class="form-group">
-	<textarea name="description" class="form-control" placeholder="Description"></textarea>
+	<textarea name="description" class="form-control" placeholder="Description" required></textarea>
 </div>
 <div class="form-group">
-	<input type="text" name="standard_calories" class="form-control" placeholder="Calories">
+	<input type="text" name="standard_calories" class="form-control" placeholder="Calories" required>
 </div>
 <div class="form-group">
-	<input type="text" name="ingredients" class="form-control" placeholder="Ingredients">
+	<input type="text" name="ingredients" class="form-control" placeholder="Ingredients" required>
 </div>
 <div class="form-group">
-	<input type="text" name="guide" class="form-control" placeholder="Size Guide">
+	<input type="text" name="small" class="form-control" placeholder="Size Small"
+	required pattern = "true|false" title="Must be true/false">
+</div>
+<div class="form-group">
+	<input type="text" name="medium" class="form-control" pattern = "true|false" required
+	 placeholder="Size Medium" title="Must be true/false">
+</div>
+<div class="form-group">
+	<input type="text" name="large" class="form-control" pattern = "true|false" required
+	placeholder="Size Large" title="Must be true/false">
 </div>
 <div class="form-group">
 	<button type="submit" class="btn btn-info" >Save</button>
