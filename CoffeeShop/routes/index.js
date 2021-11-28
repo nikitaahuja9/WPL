@@ -26,7 +26,6 @@ router.post('/register', function(req, res) {
     if (err) {
           return res.render('exist', { account : account });
       }
-
       passport.authenticate('local')(req, res, function () {
         res.redirect('/drinks');
       });
@@ -49,7 +48,6 @@ router.get('/logout', function(req, res) {
 //List all drinks
 //Includes search and filter functionalities
 router.get("/drinks", function (req, res) {
-  console.log(req.query);
   if (
     (!req.query.search && !req.query.category) ||
     (req.query.search == "" && req.query.category == "all")
@@ -150,7 +148,6 @@ router.post('/drinks/:id/save_edit', function(req, res){
 
 //Show a drink
 router.get('/drinks/:id', function(req, res){
-
   collection.findOne({_id: req.params.id}, function(err, drink) {
       if (err) throw err;
       res.render('show', {drink: drink});
@@ -163,20 +160,32 @@ router.get('/add', function(req, res) {
   res.render('cart');
 });
 
-//Add item to cart
+
+//Show Cart drinks
 router.post('/cart', function(req, res){
-  var col = db.get('cart');
-  col.insert({
-      user : req.user,
-  }, function(err, drink) {
+  var collection = db.get('drinks');
+  collection.findOneAndUpdate(
+      {_id : req.params.id},
+      
+      { $set : {
+      type:req.body.type,
+      category:req.body.category,
+      image:req.body.image,
+      description:req.body.description,
+      standard_calories:req.body.standard_calories,
+      ingredients:req.body.ingredients,
+      small:req.body.small,
+      medium:req.body.medium,
+      large:req.body.large
+      }}, 
+
+      function(err, drink) {
       if (err) throw err;
       res.redirect('/drinks');
   }) 
 });
 
-//Show history
-router.get('/history', function(req, res) {
-  res.render('history');
-});
+
+
 
 module.exports = router;

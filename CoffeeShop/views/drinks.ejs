@@ -19,7 +19,7 @@
         <input name="search" type="text" placeholder="Enter title" />
         <label for="drinks">Choose a drink</label>
 
-        <select name="category" class="form-group" id="category" onchange="searchCategory()">
+        <select name="category" id="category" class="form-group" id="category" onchange="searchCategory()">
 
           <option value="all">All</option>
           <option value="hot">Hot Coffee</option>
@@ -36,16 +36,42 @@
 
     <div class="row">
       <% results.forEach(function(drink){ %>
-        <div class="sm-col-3 shop-item" data-item-id="<%= drink._id %>">
-          <img class="shop-item-image img-thumbnail" src="images/<%= drink.image %>" style="width:200px; height:200px;" />
-         
-          <div class="caption shop-item-title"><a href="drinks/<%= drink._id %>">
+        <div class="sm-col-3" data-item-id="<%= drink._id %>">
+          <img class="img-thumbnail" src="images/<%= drink.image %>" style="width:200px; height:200px;" />
+          <input type="text" id="type" value="<%= drink.type %>"/>
+          <div class="caption" id="title"><a href="drinks/<%= drink._id %>">
               <%= drink.type %>
             </a></div>
+            <button type="button" class="btn btn-block btn-outline-primary" onClick="cart()">Add to Cart</button>
+
         </div>
         <% }); %>
 
     </div>
   </div>
+
+  <div class="card mb-4 shadow-sm">
+    <div class="card-header">
+      <h2>Cart</h2>
+    </div>
+    <div class="card-body">
+      <table class="table">
+        <thead>
+          <td>Username</td>
+          <td>Item ID</td>
+          <td>Price</td>
+          <td></td>
+          <td></td>
+          <td class="text-right">Total: <strong class="total"></strong></td>
+          <td></td>
+        </thead>
+        <tbody class="cart">
+          <tr><script>localStorage.getItem('type')</script></tr>
+        </tbody>
+        
+      </table>
+    </div>
+  </div>
+
 
   <%- include ('partials/footer') %>

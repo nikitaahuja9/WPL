@@ -9,9 +9,8 @@
 <p>Description: <%= drink.description %></p>
 
 
-<form action="/drinks/<%= drink._id %>/cart" method="POST">
-    <button type="submit" class="btn btn-warning">Add to Cart</button>
-</form>
+
+<button type="button" class="btn btn-block btn-outline-primary" onClick="cartLS.add({id: <%= drink._id %>, name: <%= drink.type %>, price: 130})">Add to Cart</button>
 
 <br/>
 
@@ -32,3 +31,4 @@
 
 </div>
 <%- include ('partials/footer') %>
+
